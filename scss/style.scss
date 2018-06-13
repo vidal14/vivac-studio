@@ -1,0 +1,879 @@
+/*--------------------------------------------------------------*\
+TABLE CONTENTS
+\*--------------------------------------------------------------*/
+
+/*
+
+    1.- RESET - NORMALIZE
+    2.- VARIABLES - MIXINS - WEBFONTS
+    3.- ANIMACIONES CSS
+    4.- ESTILOS GLOBALES Y GENERALES
+        4.1.- Estilos generales
+        4.2.- Estilos Logos
+        4.3.- Preload
+        4.4.- Menu full-width oculto
+        4.5.- Proyecto abierto
+        4.6.- Formulario de contacto oculto
+        4.7.- Header
+        4.8.- Siguiente sección - Pre footer
+        4.9.- Encabezado secciones (imagen + titulo)
+        4.10.- Footer
+    5.- HOME PAGE (INDEX)
+    6.- SOBRE VIVAC - NOSOTROS
+    7.- SOBRE VIVAC - SERVICIOS
+    8.- PROYECTOS
+
+*/
+
+
+
+/*--------------------------------------------------------------*\
+RESET - NORMALIZE
+\*--------------------------------------------------------------*/
+
+html, body {margin: 0;padding: 0;width: 100%;height: 100%; }html { box-sizing: border-box; font-size:62.5%;}*, *:before, *:after { box-sizing: inherit;}a {text-decoration: none; color: inherit;}body h1,body h2{margin:0;}ul{list-style: none; padding:0; margin: 0;}
+
+@import "normalize";
+
+
+
+
+
+/*--------------------------------------------------------------*\
+VARIABLES - WEBFONTS - MIXINS - EXTENDS
+\*--------------------------------------------------------------*/
+
+@import "var-mixins-fonts";
+
+
+
+
+
+/*--------------------------------------------------------------*\
+ANIMACIONES CSS
+\*--------------------------------------------------------------*/
+
+@import "animaciones";
+
+
+
+
+/*--------------------------------------------------------------*\
+ESTILOS GLOBALES Y GENERALES
+\*--------------------------------------------------------------*/
+
+@import "globals";
+
+
+
+
+
+/*--------------------------------------------------------------*\
+HOME PAGE (INDEX)
+\*--------------------------------------------------------------*/
+
+
+.wrapper-projects {
+  width: 85%;
+  min-height: auto;
+  max-width: 1700px;
+  margin: 82px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+    .project {
+      flex-basis: 100%;
+      height: 600px;
+      margin-bottom: 100px;
+      position: relative;
+      cursor: pointer;
+
+        &:nth-of-type(3n+2){
+          flex-basis: 53%;
+          height: 500px;
+          margin-bottom: 100px;
+          position: relative;
+        }
+        &:nth-of-type(3n+3){
+          flex-basis: 43%;
+          height: 500px;
+          margin-bottom: 100px;
+          position: relative;
+        }
+    }
+
+        .project-image {
+          width: 100%;
+          height: 90%;
+          @extend .background-ajusts;
+          position: absolute;
+          transition: transform .6s ease-out;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+        }
+
+            .project-image-uno {
+              background-image: url(../img/project-mocmao.jpg);
+            }
+            .project-image-dos {
+              background-image: url(../img/project-cvj.jpg);
+            }
+            .project-image-tres {
+              background-image: url(../img/project-quatreulls.jpg);
+            }
+            .project-image-cuatro {
+              background-image: url(../img/project-gram.jpg);
+            }
+
+    /* Headings proyectos */
+
+    .project-headings {
+      @include flex(flex, center, flex-start);
+      flex-direction: column;
+      position: absolute;
+      bottom: 0px;
+      left: 40px;
+      font-size: 23px;
+    }
+
+        .project-categoria {
+          display: inline-block;
+          padding: 8px;
+          font-size: 1em;
+          letter-spacing: 1px;
+          color: $titulos-categorias;
+          background-color: black;
+          text-align: center;
+        }
+
+        .project-titulo {
+          display: inline-block;
+          padding: 2px 8px;
+          font-size: 1.8em;
+          letter-spacing: 1px;
+          color: $titulos-proyectos;
+          background-color: white;
+          text-align: center;
+        }
+
+  /* Animación hover projects y headings */
+
+    .project:hover .project-image {
+        transform: scale(0.95);
+        transform-origin: 50% 50%;
+    }
+    .project-headings span {
+        transition: all .6s ease-out;
+    }
+
+    .project:hover .project-headings span:nth-of-type(odd){
+        transform: translateX(20px);
+    }
+    .project:hover .project-headings span:nth-of-type(even){
+        transform: translateX(-20px);
+    }
+    .project:hover .project-headings .project-categoria{
+        background-color: white;
+        color: black;
+    }
+    .project:hover .project-headings .project-titulo{
+        background-color: black;
+        color: white;
+    }
+
+
+/* Media queries: index */
+
+@media (max-width:1000px) {
+    .project:nth-of-type(3n+2) {
+        flex-basis: 100%;
+    }
+    .project:nth-of-type(3n+3) {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .project-headings {
+        font-size: 18px;
+        left: 20px;
+    }
+    .wrapper-projects {
+         width: 100%;
+     }
+}
+
+@media (max-width:500px) {
+    .project {
+        pointer-events:auto;
+    }
+}
+
+@media (max-width: 400px) {
+    .project-headings {
+        font-size: 15px;
+        left: 10px;
+    }
+
+    .project {
+        height: 400px;
+    }
+}
+@media (max-width: 320px) {
+     .project-headings {
+        font-size: 14px;
+     }
+}
+
+
+
+
+
+
+/*--------------------------------------------------------------*\
+SOBRE VIVAC - NOSOTROS
+\*--------------------------------------------------------------*/
+
+.nosotros {
+  background-image: url('../img/header-sobre-vivac.jpg');
+  @extend .background-ajusts;
+}
+
+    .nosotros-info {
+      width: 100%;
+      min-height: 600px;
+      margin: 180px auto 220px auto;
+      text-align: center;
+      font-size: 1rem;
+
+        p {
+          width: 40%;
+          font-weight:lighter;
+          font-size: 1.9em;
+          letter-spacing: 1px;
+          margin: 0 auto;
+        }
+
+        p:first-child {
+          width: 84%;
+          font-size: 2.4em;
+          font-weight: initial;
+        }
+        p:nth-of-type(2) {
+          margin-bottom: 80px;
+        }
+    }
+    .separador-wrapper {
+        width: 20%;
+        height:30px;
+        margin: 40px auto 90px auto;
+        position: relative;
+
+        span {
+            width: 100%;
+            height: 7px;
+            display: block;
+            margin-top: 10px;
+            background-color: $titulos-proyectos;
+            border: none;
+            position: absolute;
+            left:0;
+        }
+    }
+    
+    
+
+@media (max-width: 900px) {
+    .nosotros-info {
+       font-size: 0.9rem;
+    }
+    .nosotros-info p{
+        width: 65%;
+    }
+    .nosotros-info p:first-child{
+        width: 88%;
+    }
+}
+
+@media (max-width: 500px) {
+    .nosotros-info {
+      margin: 140px auto 180px auto;
+      font-size: 0.8rem;
+    }
+    .nosotros-info p{
+      width: 80%;
+    }
+}
+
+
+
+
+
+/*--------------------------------------------------------------*\
+SOBRE VIVAC - SERVICIOS
+\*--------------------------------------------------------------*/
+
+.servicios {
+  background-image: url('../img/header-que-hacemos.jpg');
+  @extend .background-ajusts;
+}
+
+    .servicios-wrapper {
+      width: 100%;
+      min-height: 800px;
+      margin: 150px auto 200px auto;
+    }
+
+    .servicios-tipo {
+      width: 100%;
+      min-height: 600px;
+      margin-top: 240px;
+      @include flex (flex, center, center);
+      position: relative;
+    }
+        .servicios-fondo {
+          width: 500px;
+          height: 350px;
+          background-color: $gris;
+        }
+        
+        .servicios-imagen {
+          width: 400px;
+          height: 333px;
+          position: absolute;
+        }
+
+            .servicios-imagen-diseño {
+              background-image: url(../img/servicios-diseno-grafico-dos.jpg);
+              @extend .background-ajusts;
+              transform: translate(260px, -200px);
+            }
+
+            .servicios-imagen-web {
+              background-image: url(../img/servicios-web.jpg);
+              @extend .background-ajusts;
+              transform: translate(-260px, -200px);
+            }
+
+            .servicios-headings {
+              width: 450px;
+              height: auto;
+              text-align: left;
+              position: absolute;
+              font-size: 1rem;
+
+                h1 {
+                  font-size: 5em;
+                }
+
+                p {
+                  font-size: 1.9em;
+                  font-weight: lighter;
+                  line-height: 36px;
+                  margin: 40px auto;
+                }
+            }
+
+                .servicios-headings-diseño {
+                  transform: translate(-260px, 5px);
+                }
+                .servicios-headings-web {
+                  transform: translate(260px, 40px);
+                }
+
+
+            .servicios-trabajos {
+              width: 400px;
+              height: auto;
+              @include flex(inline-flex, center, flex-start);
+              flex-direction: column;
+              position: absolute;
+              font-size: 2rem;
+
+                span {
+                  display: inline-block;
+                  font-family:'Raleway', 'Verdana', sans-serif;
+                  font-weight: bolder;
+                  letter-spacing: 1px;
+                  color: white;
+                  background-color: #7F7F7F;
+                  padding: 10px 20px;
+                }
+            }
+
+                .servicios-trabajos-diseño {
+                  transform: translate(260px, 200px);
+                }
+
+                .servicios-trabajos-web {
+                  align-items: flex-end;
+                  transform: translate(-260px, 200px);
+                }
+
+
+@media (max-width: 950px) {
+
+   .servicios-tipo {
+     margin-top: 130px;
+ }
+
+   .servicios-imagen{
+       width: 300px;
+       height: 233px;
+   }
+       .servicios-imagen-diseño {
+           transform: translate(200px, -150px);
+       }
+       .servicios-imagen-web {
+           transform: translate(-200px, -150px);
+       }
+   .servicios-headings {
+       width: 350px;
+       font-size: 0.9rem;
+   }
+       .servicios-headings-diseño {
+               transform: translate(-180px, 30px);
+           }
+       .servicios-headings-web {
+               transform: translate(180px, 10px);
+           }
+   .servicios-trabajos {
+       width: 300px;
+       font-size: 1.5rem;
+   }
+       .servicios-trabajos-diseño {
+           transform: translate(200px, 150px);
+       }
+       .servicios-trabajos-web {
+           transform: translate(-200px, 150px);
+       }
+}
+
+
+    @media (max-width: 700px) {
+    .servicios-wrapper {
+        width: 100%;
+        min-height: 800px;
+        margin: 140px auto 170px auto;
+    }
+        .servicios-tipo {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height:780px;
+        }
+        .servicios-tipo .servicios-fondo {
+           display: none;
+      }
+
+        .servicios-imagen, .servicios-headings, .servicios-trabajos {
+          position: static;
+        }
+
+            .servicios-imagen-diseño {
+                transform: translate(0);
+            }
+            .servicios-imagen-web {
+                transform: translate(0);
+            }
+
+        .servicios-headings {
+                width: 80%;
+                height: auto;
+                text-align: center;
+            }
+               .servicios-headings h1 {
+                   font-size:4.5em;
+               }
+               .servicios-headings-diseño {
+                       transform: translate(0);
+                   }
+               .servicios-headings-web {
+                    transform: translate(0);
+                }
+
+        .servicios-trabajos {
+            width: 80%;
+            height: auto;
+            @include flex(inline-flex, center, center);
+        }
+             .servicios-trabajos span {
+                 width:300px;
+                 text-align: center;
+             }
+            .servicios-trabajos-diseño {
+                transform: translate(0);
+            }
+            .servicios-trabajos-web {
+                transform: translate(0);
+            }
+    }
+
+        @media (max-width: 450px) {
+        .servicios-wrapper {
+            margin: 100px auto 150px auto;
+        }
+
+            .servicios-tipo:nth-of-type(2) {
+                margin-top: 100px;
+            }
+
+            .servicios-headings{
+                width: 100%;
+            }
+                .servicios-headings p{
+                    width: 80%;
+                }
+                .servicios-headings h1 {
+                    font-size:3.5em;
+                }
+
+            .servicios-imagen{
+                    margin-top: 30px;
+                    width: 100%;
+                    height: 300px;
+                }
+            .servicios-trabajos {
+                width: 100%;
+            }
+            .servicios-trabajos span {
+                width: 100%;
+            }
+    }
+
+
+
+
+
+
+/*--------------------------------------------------------------*\
+PROYECTOS
+\*--------------------------------------------------------------*/
+
+.proyectos {
+  background-image: url('../img/header-proyectos.jpg');
+  @extend .background-ajusts;
+}
+
+    .proyectos-filtro {
+      width: 70%;
+      margin: 15% auto 10% auto;
+      padding: 20px;
+      font-size: 2rem;
+      @include flex(flex, space-between,center);
+      flex-wrap: wrap;
+
+        hr {
+          width: 6%;
+          height: 2px;
+          background-color: #d6d6d6;
+          border: none;
+          display: inline-block;
+          margin:0;
+         }
+         
+        span {
+            color:#d6d6d6;
+        }
+
+        button {
+          border:none;
+          outline: none;
+          cursor: pointer;
+
+          &.active {
+              color: #d6d6d6;
+          }
+        }
+    }
+
+
+    .global-container {
+    width: 100%;
+    @include flex (flex, center, flex-start);
+}
+
+    .container-projects {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+        .prueba-container-project {
+            flex-basis: 40%;
+            height: auto;
+            padding: 0 5px;
+            margin-bottom:200px;
+            margin-right: 30px;
+            text-align: center;
+
+            &:hover .proyecto-imagen{
+                transform: scale(0.9);
+            }
+
+            &:hover .proyecto-imagen img {
+                transform: scale(1.2);
+            }
+
+            &:hover .proyecto-headings h1:before {
+                 width: 30px;
+             }
+
+        }
+        
+        .prueba-container-project:nth-child(even) {
+            margin-right: 0px;
+        }
+
+            .proyecto-headings {
+                    text-align: left;
+                    width: 100%;
+                    font-size: 1rem;
+                    margin-top: 20px;
+                    margin-left: 15px;
+                    padding: 0px;
+
+                    & h3 {
+                        font-size: 1.5em;
+                        font-weight: 100;
+                        color: $titulos-light;
+                        transition: margin .4s ease;
+                        margin:0 0 5px 0;
+                    }
+                    & h1 {
+                        font-size: 3.5em;
+                        transition: margin .4s ease; 
+
+                        &:before {
+                        content:'';
+                        width: 0px;
+                        height: 4px;
+                        //margin-top: -5px;
+                        margin: 0 5px 9px 0;
+                        background: $titulos-proyectos;
+                        display: inline-block;
+                        transition: width .4s ease;
+                        }
+                    }
+                }
+
+            .proyecto-imagen {
+                transition: transform .4s ease;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                    transition: transform .4s ease;
+                }
+            }       
+                
+
+    @media (max-width: 1000px) {
+        .proyectos-filtro {
+            width: 85%;
+        }
+        
+    }
+
+    @media (max-width: 800px) {
+        .proyectos-filtro {
+            width: 95%;
+            font-size: 1.8rem;
+        }
+            .proyectos-filtro span {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            .proyectos-filtro hr {
+                display: none;
+            }
+        .prueba-container-project {
+            flex-basis: 80%;
+            margin-right: 0;
+            margin-top:0px;
+        }
+        .proyecto-headings {
+                font-size:0.8rem;
+            }
+    }
+
+    @media (max-width: 600px) {
+        .prueba-container-project {
+            flex-basis: 90%;
+            margin-right: 0;
+            margin-top:0px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .proyectos-filtro {
+            margin: 25% auto;
+            font-size: 1.6rem;
+        }
+
+        .proyecto-headings {
+                font-size:0.6rem;
+                text-align: center;
+            }
+    }
+
+    @media (max-width: 350px) {
+        .proyectos-filtro {
+            font-size: 1.4rem;
+        }
+    }
+
+
+
+//CONTACTO
+
+        //Encabezado
+
+        .contacto {
+            background-image: url('../img/header-contacto-tres.jpg');
+            @extend .background-ajusts;
+
+        }
+
+        .contacto-wrapper {
+            width: 100%;
+            min-height: 800px;
+            margin: 180px auto 190px auto;
+            text-align:center;
+            color:$titulos-proyectos;
+            letter-spacing: 1px;
+            @include flex (flex, space-between, center);
+            flex-direction: column;
+        }
+
+            .contacto-headings {
+                flex-basis: 80%;
+                min-height: auto;
+                font-size: 1rem;
+                line-height: 36px;
+
+                & p {
+                width: 84%;
+                margin: 30px auto;
+                color: $titulos-proyectos;
+                }
+
+                & p:first-of-type {
+                    font-size:2.4em;
+                }
+                & p:last-of-type {
+                    width: 45%;
+                    font-size:1.9em;
+                    font-weight: lighter;
+                }
+            }
+
+        .boton-form {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 3.5rem;
+                margin: 100px;
+                padding: 10px 30px;
+                border: 3px solid $titulos-proyectos;
+                position: relative;
+                transition: color .3s ease;
+                cursor: pointer;
+
+                &:before{
+                    content:"";
+                    width:0%;
+                    height:100%;
+                    background-color: $titulos-proyectos;
+                    position: absolute;
+                    z-index:-1;
+                    top:0;
+                    left:0;
+                    transition: width .3s ease;
+                }
+                &:hover {
+                    color:white;
+                }
+                &:hover:before {
+                    width: 100%;
+                }
+            }
+
+        .contacto-directions {
+            color: $titulos-proyectos;
+            font-size: 1rem;
+
+            & h2 {
+                font-family: 'Raleway', 'Verdana';
+                margin-bottom: 40px;
+                font-size: 1.9em;
+            }
+            & h2:nth-of-type(2) {
+                font-size: 2.4em;
+                font-weight: bold;
+            }
+        }
+
+         @media (max-width: 900px) {
+            .contacto-headings p{
+                width: 90%;
+            }
+            .contacto-headings p:last-child{
+                width: 60%;
+            }
+            .contacto-directions {
+               font-size: 0.9rem;
+            }
+            .boton-form {
+                font-size: 3rem;
+            }
+        }
+
+         @media (max-width: 500px) {
+             .contacto-wrapper {
+                 margin: 120px auto 140px auto;
+             }
+            .contacto-headings, .contacto-directions {
+               font-size: 0.8rem;
+            }
+            .contacto-headings p:last-child{
+                width: 70%;
+            }
+            .boton-form {
+                font-size: 2rem;
+                padding: 10px 15px;
+            }
+            .contacto-directions {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 330px) {
+            .boton-form {
+                margin:80px;
+                padding: 10px 15px;
+            }
+        }
+
+    //MAPA
+
+    #mapa {
+        width: 100%;
+        height:450px;
+    }
+
+/* Desarrollador */
+
+.dev {
+    border: 2px solid red;
+}
+
+    

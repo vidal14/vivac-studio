@@ -1,0 +1,159 @@
+@import "var-mixins-fonts";
+
+
+//ANIMACIONES DE ENTRADA
+
+//HOME
+    .inUp {
+        animation: inUp 2s backwards;
+    }
+        @keyframes inUp {
+            0% {
+                //opacity:0;
+                transform: translateY(100px);
+            }
+            // 10% {
+            //     opacity:1;
+            // }
+            100% {
+                //opacity:1;
+                transform: translateY(0px);
+            }
+        }
+    
+    .inLeft {
+        animation: inLeft 0.3s ease backwards;
+    }
+        @keyframes inLeft {
+            0% {
+                opacity:0;
+                transform: translateX(-150px);
+            }
+            100% {
+                opacity:1;
+                transform: translateX(0px);
+            }
+        }
+ 
+    //TEXTOS
+    .enterDown {
+        animation: enterDown 2s backwards;
+    }
+        @keyframes enterDown {
+            0% {
+                opacity:0;
+                transform: translateY(40px);
+            }
+            
+            100% {
+                opacity:1;
+                transform: translateY(0px);
+            }
+        }
+    
+    
+
+    //LINEA SEPARADORA
+    .longitud {
+        animation: longitud 2s ease .7s backwards ;
+    }
+      @keyframes longitud {
+        0% {
+            width:0;
+            
+        }
+        100% {
+            width: 100%;
+            
+        }
+    }
+
+    //SERVICIOS
+
+    .headingsLeft {
+        animation: headingsLeft 1.5s ease backwards ;
+    }
+      @keyframes headingsLeft {
+        0% {
+            opacity:0;
+            transform: translateX(-560px);
+        }
+        100% {
+            transform: translateX(auto);
+            opacity:1;
+        }
+    }
+
+    .headingsRight {
+        animation: headingsRight 1.5s ease backwards ;
+    }
+      @keyframes headingsRight {
+        0% {
+            opacity:0;
+            transform: translateX(560px);
+        }
+        100% {
+            transform: translateX(auto);
+            opacity:1;
+        }
+    }
+
+    .imageRight {
+        animation: imageRight 1.5s ease 0.15s backwards ;
+    }
+      @keyframes imageRight {
+        0% {
+            opacity:0;
+            transform: translate(560px, -200px);
+        }
+        100% {
+            transform: translate(auto, auto);
+            opacity:1;
+        }
+    }
+
+    .imageLeft {
+        animation: imageLeft 1.5s ease 0.15s backwards ;
+    }
+      @keyframes imageLeft {
+        0% {
+            opacity:0;
+            transform: translate(-560px, -200px);
+        }
+        100% {
+            transform: translate(auto, auto);
+            opacity:1;
+        }
+    }
+
+     .trabajosRight {
+        animation: trabajosRight 1.5s ease 0.25s backwards ;
+    }
+      @keyframes trabajosRight {
+        0% {
+            opacity:0;
+            transform: translate(560px, 200px);
+        }
+        100% {
+            transform: translate(auto, auto);
+            opacity:1;
+        }
+    }
+
+    .trabajosLeft {
+        animation: trabajosLeft 1.5s ease 0.25s backwards ;
+    }
+      @keyframes trabajosLeft {
+        0% {
+            opacity:0;
+            transform: translate(-560px, 200px);
+        }
+        100% {
+            transform: translate(auto, auto);
+            opacity:1;
+        }
+    }
+
+
+    
+

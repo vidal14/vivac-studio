@@ -1,0 +1,43 @@
+
+/*  Tipografías */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,400i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+
+/*  Variables - Colores  */
+
+$titulos-proyectos: #4B4B4B;
+$titulos-categorias: white;
+$titulos-light: #72747A;
+$gris: #F6F6F6;
+$blanco: white;
+$negro: black;
+
+/*  Variables - Textos  */
+
+$font-size-categoria: 2.3rem;
+$font-size-titulo: 4rem;
+
+
+/*  Mixins  */
+
+@mixin font($font-family, $font-size, $color) {
+    font-family: $font-family;
+    font-size: $font-size;
+    color: $color;
+}
+
+@mixin flex($display, $justify-content, $align-items) {
+    display: $display;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+/*  Extends  */
+
+.background-ajusts {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

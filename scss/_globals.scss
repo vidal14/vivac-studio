@@ -1,0 +1,864 @@
+
+/************  ESTILOS GENERALES   ************/
+
+body {
+    background: white;
+}
+
+h1, h2, span, button, header, .menu, .proyecto-headings h3 {
+    font-family: 'Montserrat';
+    color: $titulos-proyectos;
+}
+
+p, h3, label, input {
+    font-family: 'Raleway', 'Verdana';
+    color: $titulos-proyectos;
+    line-height: 36px;
+}
+
+body.scroll-oculto {
+    overflow: hidden;
+}
+
+
+/************  ESTILOS LOGOS   ************/
+
+#logo-vivac {
+    width:150px;
+    height:60px;
+}
+
+#logo-studio-vivac {
+    width: 180px;
+    height: 87px;
+}
+
+
+/************  PRELOAD   ************/
+
+.preload {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    position: absolute;
+    top:0;
+    z-index: 1000;
+    @include flex(flex, center, center);
+    flex-direction: column;
+
+    .preload-dos {
+        width: 150px;
+        height: 150px;
+        position: relative;
+
+        img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .preload-ocultar {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top:0;
+            background: #fff;
+            animation: svg .1s ease infinite;
+        }
+    }
+
+}
+
+@keyframes svg {
+    0%{
+        height:100%;
+    }
+    50%{
+        height: 0%;
+    }
+    100%{
+        height: 100%;
+    }
+    
+}
+
+
+/************  MENU FULL-WIDTH OCULTO   ************/
+
+.menu {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    @include flex(flex, center, center);
+    flex-direction: column;
+    position: fixed;
+    z-index: 50;
+    top:0;
+    transform:translateX(100%); //Para animación
+}
+
+    .menu-background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top:0;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.7);
+        overflow: hidden;
+
+         video {
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity:0; //Para animación
+        }
+    }
+
+    .menu-nav {
+        width: 100%;
+        height: 80%;
+        margin-top: 80px;
+        @include flex(flex, center, center);
+        flex-direction: column;
+        font-size: 7.2rem;
+        letter-spacing: -1px;
+        position: relative;
+        z-index: 49;
+        color: rgba(255, 255, 255, 0.3);
+        transform: translateY(20px);//Para animación
+        opacity:0;//Para animación
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        span {
+            font-size: 2.6rem;
+            
+        }
+        span:first-of-type {
+            padding-right: 15px;
+        }
+    }
+
+    #logo-menu {
+        width: 50px;
+        height: 43px;
+        position: absolute;
+        top:60px;
+        z-index: 49;
+        opacity: 0; //Para aniamción
+    }
+
+    //Estilos para enlaces activos, hover y visitados del menu
+
+    .menu-nav li a {
+        transition: color .3s ease-in-out;
+    }
+    .menu-nav li a:hover, .menu-nav li a.active, .menu-nav li a:visited {
+        color: white;
+    }
+
+    //Menu oculto cuando no está activo (Animación - JS)
+
+    .menu.menu-oculto {
+        display:none;
+    }
+
+
+    //Media Queries
+
+    @media (max-width:700px) {
+        .menu .menu-nav {
+            font-size: 6rem;
+
+            span {
+                font-size: 2rem;
+            }
+
+            span:first-of-type {
+            padding-right: 5px;
+        }
+        }
+
+        .menu .menu-background video {
+            display: none;
+        }
+    }
+    @media (max-width:600px) {
+        #logo-menu {
+            transform: scale(0.8);
+            top:30px;
+
+        }
+    }
+    @media (max-width:400px) {
+        .menu .menu-nav {
+            font-size: 4rem;
+        }
+    }
+
+
+
+
+/************  PROYECTO ABIERTO   ************/
+
+.proyecto-wrapper {
+    width: 100%;
+    height: 100%;
+    @include flex(flex, flex-end, center);
+    position: fixed;
+    top:0;
+    z-index: 60;
+    background-color: rgba(0, 0, 0, 0.35);
+    visibility: hidden; //para animación
+    opacity: 0;
+}
+
+    .proyecto-wrapper-left {
+        width: calc(100vw - 1200px);
+        height: 100vh;
+    }
+
+    .proyecto-wrapper-right {
+        flex-basis: 1200px;
+        height: 100%;
+        position: relative;
+        background-color: white;
+        box-shadow: 1px 0px 100px 0.5px;
+        transform: translateX(150%);
+        overflow: auto;
+    }
+
+    .proyecto-info-wrapper {
+        flex-basis: 100%;
+        @include flex(flex, center, center);
+        flex-direction: column;
+        position:relative;
+
+        & .form-icon-dos {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            position: absolute;
+            top: 80px;
+            right: 10%;
+            cursor: pointer;
+            z-index:50;
+            
+
+             & span {
+                width: 100%;
+                height: 4px;
+                background: black;
+                display: inline-block;
+                position: absolute;
+            }
+            & span:first-of-type {
+                    transform: rotate(45deg);
+                }
+            & span:last-of-type {
+                    transform: rotate(-45deg);
+                }
+         }
+    }
+    .proyecto-info {
+        width: 85%;
+        height: auto;
+        padding-bottom: 150px;
+        font-size: 1rem;
+        @include flex(flex, center, center);
+        flex-direction: column;
+        transform: translateY(60px);
+        opacity: 0;//Para animación
+    }
+
+    .proyecto-heading{
+        width: 100%;
+        margin-top: 100px;
+        @include flex(flex, space-between, flex-start);
+        img {
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+            }
+    }
+        
+            
+        
+        
+        .proyecto-titulos {
+            margin-top: 170px;
+
+            h1 {
+                font-size: 4em;
+                color: $titulos-light;
+            }
+            h2 {
+                font-size: 2em;
+                color: $titulos-proyectos;
+            }
+        }
+
+
+     @media (max-width: 1000px) {
+            .proyecto-heading{
+                flex-direction: column;
+            }
+    }
+    @media (max-width: 700px) {
+        .proyecto-heading {
+            margin-top: 180px;
+        }
+            .proyecto-titulos h1{
+                font-size: 3.5em;
+            }
+            .proyecto-titulos h2{
+                font-size: 2em;
+            }
+    }
+
+    .proyecto-descripcion {
+         font-family: 'Raleway';
+         margin-top: 100px;
+         text-align: center;
+
+         h2, p {
+             text-align: left;
+         }
+
+         h2 {
+             font-size: 2em;
+             color: $titulos-proyectos;
+         }
+
+         p {
+
+             font-size: 1.8em;
+             color: $titulos-light;
+             line-height: 25px;
+         }
+
+         img {
+             text-align: center;
+             margin-top:70px;
+         }
+     }
+
+     .proyecto-imagenes {
+         width: 100%;
+
+         img {
+             width: 100%;
+             height: auto;
+             margin-bottom: 10px;
+         }
+     }
+
+@media (max-width:1100px) {
+
+    .proyecto-info {
+        flex-basis: 100%;
+        padding-right: 30px;
+
+    }
+            .proyecto-descripcion {
+                width: 100%;
+                text-align: left;
+            }
+        .proyecto-wrapper-right {
+            flex-basis: 100%;
+        }
+                .proyecto-heading img {
+                    transform: scale(0.8);
+                }
+        .proyecto-wrapper-left {
+            width:0;
+        }
+}
+
+@media (max-width:650px) {
+    .proyecto-heading {
+               flex-direction: column;
+    }
+        .proyecto-titulos {
+            margin-top: 0;
+        }
+}
+
+
+
+
+/************  FORMULARIO DE CONTACTO OCULTO   ************/
+
+.form-wrapper {
+    width: 100%;
+    height: 100%;
+    @include flex(flex, flex-end, center);
+    position: fixed;
+    top:0;
+    z-index: 60;
+    background-color: rgba(0, 0, 0, 0.35);
+    visibility: hidden; //Para animación
+    opacity: 0;//Para animación
+
+}
+
+    .form-wrapper-close {
+        flex-basis: calc(100vw - 600px);
+        height: 100%;
+    }
+    .form-wrapper-info {
+        flex-basis: 600px;
+        height:100%;
+        @include flex(flex, center, flex-start);
+        position: relative;
+        background-color: white;
+        box-shadow: 1px 0px 100px 0.5px;
+        transform: translateX(100%);//Para animación
+    }
+
+        .form-info {
+            flex-basis: 70%;
+            height: 50%;
+            margin-top: 70px;
+            @include flex(flex, space-between, flex-start);
+            flex-direction: column;
+            align-self: center;
+            position: relative;
+            font-size: 1rem;
+            opacity:0; //Para animación
+            transform: translateY(15px); //Para animación
+
+            div {
+                width: 100%;
+            }
+            div label, div input{
+                display: block;
+                padding: 5px;
+            }
+            div label {
+                font-size: 2em;
+                color: $titulos-light;
+            }
+            div input {
+                font-size: 2.5rem;
+                color: black;
+                padding:5px;
+                margin:0;
+                border:0;
+                border-bottom: 1px solid $titulos-proyectos;
+                outline: 0;
+            }
+            .boton-form {
+                font-size: 2rem;
+                padding: 8px 12px;
+                margin:0;
+                background: transparent;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+
+
+            .form-info-uno {
+                position: absolute;
+                transition: all .6 ease;
+            }
+
+            .form-info-uno, .form-info-dos, .form-info-tres {
+                transition: all .6s ease;
+            }
+
+
+    .form-icon {
+        flex-basis: 30px;
+        height: 30px;
+        display: inline-block;
+        position: relative;
+        left:75%;
+        top: 90px;
+        //transform: translate(400px, 100%);
+        cursor: pointer;
+
+
+        & span {
+        width: 100%;
+        height: 4px;
+        background: black;
+        display: inline-block;
+        position: absolute;
+    }
+        & span:first-of-type {
+                transform: rotate(45deg);
+            }
+        & span:last-of-type {
+                transform: rotate(-45deg);
+            }
+    }
+
+
+@media (max-width: 550px) {
+    .form-info {
+        flex-basis: 100%;
+    }
+    .form-icon {
+        left:80%;
+    }
+}
+
+
+/************  HEADER   ************/
+
+header {
+  width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  padding: 0 9%;
+  @include flex(flex, space-between, flex-end);
+  position: absolute;
+  top:0;
+
+    div {
+      width:33%;
+      height:100%;
+      @include flex(flex, center, flex-end);
+    }
+}
+
+    .header-idiomas {
+        justify-content: flex-start;
+
+        ul {
+            display: flex;
+            //@include flex(flex, center, flex-end);
+            padding:10px;
+            font-size: 1.7rem;
+            position: relative;
+            z-index:20;
+
+            li, span {
+              padding-right: 10px;
+            }
+        }
+    }
+
+    .header-logo {
+        position: relative;
+        z-index: 20;
+    }
+
+    .header-nav{
+      justify-content: flex-end;
+      position: relative;
+      z-index:50;
+    }
+        .header-nav-icon {
+            position: fixed;
+        }
+
+
+
+
+
+
+
+/************  BURGUER MENU  ************/
+
+
+.header-nav-icon {
+  pointer-events: all;
+  width: 25px;
+  height: 25px;
+  margin-top: 0px;
+  transform: rotate(0deg);
+  cursor: pointer;
+
+     span {
+     display: block;
+     position: absolute;
+     height: 4px;
+     width: 100%;
+     background: black;
+     border-radius: 9px;
+     opacity: 1;
+     left: 0;
+     transition:all 0.25s ease-in-out;
+     transform: rotate(0deg);
+
+     &:nth-child(1) {
+      top: 0px;
+        }
+     &:nth-child(2), &:nth-child(3) {
+      width: 60%;
+      left: 40%;
+      top: 8px;
+        }
+     &:nth-child(4) {
+      top: 16px;
+        }
+    }
+}
+
+    /* Cuando hacemos hover sobre el burguer menu */
+
+  .header-nav-icon:hover span:nth-child(1), .header-nav-icon:hover span:nth-child(4){
+    width: 70%;
+    left:30%;
+  }
+  .header-nav-icon:hover span:nth-child(2), .header-nav-icon:hover span:nth-child(3){
+    width: 100%;
+    left:0;
+  }
+
+    /* Cuando se activa el menu burguer */
+
+        .header-nav-icon.is-open span {
+          background: white;
+        }
+        .header-nav-icon.is-open span:nth-child(1) {
+        top: 6px;
+        width: 0%;
+        left: 50%;
+        }
+        .header-nav-icon.is-open span:nth-child(2) {
+          transform: rotate(45deg);
+          width: 100%;
+          left:0;
+        }
+        .header-nav-icon.is-open span:nth-child(3) {
+          transform: rotate(-45deg);
+          width: 100%;
+          left:0;
+        }
+        .header-nav-icon.is-open span:nth-child(4) {
+          top: 6px;
+          width: 0%;
+          left: 50%;
+        }
+
+
+/* Media Queries: header */
+
+
+@media (max-width:600px){
+
+    .header-idiomas {
+        display:none;
+    }
+
+    .header-nav {
+        transform:translateY(-30px);
+    }
+    header #logo-vivac {
+        transform: scale(0.8);
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+
+/************  SIGUIENTE SECCIÓN  ************/
+
+    .siguiente {
+        width: 100%;
+        height: 370px;
+        @include flex(flex, space-between, center);
+        background-color: $gris;
+
+        hr{
+            height: 70%;
+            color: $titulos-proyectos;
+        }
+    }
+
+        .siguiente-contacto, .siguiente-seccion{
+            flex:1 1 50%;
+            height: 100%;
+            @include flex(flex, center, center);
+            flex-direction: column;
+            color:$titulos-proyectos;
+            font-size: 16px;
+
+            a {
+                display: inline-block;
+                text-align: center;
+
+                &:hover .arrow{
+                width: 60px;
+                }
+            }
+
+            h2 {
+                font-size: 1em; //16px
+                margin-bottom: 26px;
+            }
+
+            h1 {
+                font-size: 1.25em; //20px
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Flechas siguiente sección */
+        .arrow {
+            width: 30px;
+            height: 1px;
+            display: inline-block;
+            background: black;
+            position: relative;
+            transition: width .3s ease-in;
+
+            span {
+                width: 7px;
+                height: 1px;
+                position: absolute;
+                background:black;
+            }
+
+            span:nth-of-type(1) {
+                top: -2px;
+                right: -1px;
+                transform: rotate(40deg);
+
+            }
+            span:nth-of-type(2) {
+                bottom: -2px;
+                right: -1px;
+                transform: rotate(-40deg);
+            }
+        }
+
+            .siguiente-contacto .arrow {
+                transform:rotate(180deg);
+            }
+
+/* Media Queries: siguiente sección */
+
+    @media (max-width: 500px) {
+        .siguiente {
+            flex-direction: column;
+        }
+        .siguiente hr {
+            width: 70%;
+            height: 0;
+        }
+        .siguiente-contacto, .siguiente-seccion {
+            font-size: 14px;
+        }
+    }
+
+
+
+
+
+/************  ENCABEZADO TODAS LAS SECCIONES (IMAGEN + TITULO)  ************/
+
+.wrapper-section {
+    width:100%;
+    height: 350px;
+    position: relative;
+
+    span {
+        font-size: 8rem;
+        font-weight: bolder;
+        color: $titulos-proyectos;
+        margin-left:5%;
+        padding:20px 40px;
+        position: absolute;
+        bottom: -60px;
+        background-color: white;
+    }
+}
+
+/* Media Queries: encabezado secciones */
+
+        @media (max-width: 900px) {
+            .wrapper-section span{
+                font-size: 7rem;
+            }
+        }
+         @media (max-width: 800px) {
+            .wrapper-section span{
+                font-size: 6rem;
+            }
+        }
+
+        @media (max-width: 610px) {
+            .wrapper-section span{
+                margin-left:0;
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .wrapper-section {
+                height:300px;
+            }
+            .wrapper-section span{
+                margin-left:0;
+                font-size: 4rem;
+                padding:10px 20px 10px 20px;
+                bottom: -40px;
+            }
+        }
+
+        @media (max-width: 370px) {
+            .wrapper-section span{
+                margin-left:0;
+                font-size: 3.8rem;
+                padding:10px 20px 10px 20px;
+                bottom: -40px;
+            }
+        }
+
+
+/************  FOOTER  ************/
+
+footer {
+  width:100%;
+  min-height: 250px;
+  background-color: $negro;
+  @include flex(flex, center, center);
+ }
+
+    .footer-info {
+      width: 50%;
+      height: 100%;
+      @include flex(flex,space-between, center);
+      flex-direction: column;
+
+        h3 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-top: 25px;
+        letter-spacing: 1px;
+        line-height: 20px;
+        color: $titulos-light;
+        }
+    }
+
+/* Media Queries: footer */
+
+    @media (max-width: 600px) {
+        footer .footer-info {
+            width:80%;
+        }
+        footer .footer-info h3 {
+            font-size: 1.2rem;
+        }
+        footer .footer-info a img {
+            transform: scale(0.6);
+        }
+    }
+
+
+
